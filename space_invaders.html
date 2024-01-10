@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title>My Personal Website</title>
+        <style>
+            .game_menu {
+            background-color: #333;
+            overflow: hidden;
+            }
+
+            .game_menu a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+            }
+
+            .game_menu a:hover {
+            background-color: #ddd;
+            color: black;
+            }
+
+            .game_menu a.active {
+            background-color: #111D4A;
+            color: white;
+            }
+
+            .game {
+                width: 350px;
+                height: 640px;
+                margin: auto;
+                font-family:'Courier New', Courier, monospace;
+                text-align: center;
+                margin-bottom: 25px;
+            }
+            #board {
+                width: 350px;
+                height: 640px;
+                background-color: black;
+            }
+
+            .props {
+                width: 50%;
+                padding-top: 50px;
+                padding-bottom: 50px;
+                margin: auto;
+                text-align: center;
+            }
+
+            .props p {
+                align-items: center;
+            }
+        </style>
+        <script src="space.js"></script>
+    </head>
+    <body>
+        <div class="topnav">
+            <a href="background.html">Background</a>
+            <a href="hobbies_and_interests.html">Hobbies and Interests</a>
+            <a href="lifestyle.html">Lifestyle</a>
+            <a class="active" href="flappy_bird.html">Feeling Bored?</a>
+        </div>
+
+        <div class="game_menu">
+                <a href=flappy_bird.html>Flappy Bird</a>
+                <a class="active" href="space_invaders.html">Space Invaders</a>
+                <a href="dinosaur.html">Dinosaur</a>
+        </div>
+
+        <div class="game">
+            <h1>Space Invaders</h1>
+            <canvas id="board"></canvas>
+        </div>
+
+        <div class="props">
+            <p>Props to <a href="https://github.com/ImKennyYip">Kenny</a> for teacing me how to code this game</p>
+        </div>
+        
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col">
+                        <h4>Contact Me</h4>
+                        <ul>
+                            <li><a href="#">Email: genczarlawrenz@gmail.com</a></li>
+                            <li><a href="#">Phone Numbers: +63 966 401 9713 / +63 976 494 5970</a></li>
+                            <li style="display: flex">
+                                <a href="https://www.facebook.com/genczar.tomines"><img src="Facebook_icon.png" alt="facebook_logo" style="width: 25px; display: inline; margin-right: 15px"></a>
+                                <a href="https://www.instagram.com/genczarlawrenz/"><img src="Instagram_logo.webp" alt="instagram_logo" style="width: 25px; display: inline; margin-right: 15px"></a>
+                                <a href="https://twitter.com/Lawrenz91147358"><img src="Logo_of_Twitter.png" alt="twitter_logo" style="width: 25px; display: inline; margin-right: 15px"></a>
+                            </li>
+                            <li><span>&copy; 2023 Genczar's Personal Website</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+       </footer>
+    </body>
+    <script src="script.js"></script>
+</html>
