@@ -1,11 +1,8 @@
-
-//board
 let board;
 let boardWidth = 750;
 let boardHeight = 250;
 let context;
 
-//dino
 let dinoWidth = 88;
 let dinoHeight = 94;
 let dinoX = 50;
@@ -19,7 +16,6 @@ let dino = {
     height : dinoHeight
 }
 
-//cactus
 let cactusArray = [];
 
 let cactus1Width = 34;
@@ -34,8 +30,7 @@ let cactus1Img;
 let cactus2Img;
 let cactus3Img;
 
-//physics
-let velocityX = -5; //cactus moving left speed
+let velocityX = -5; 
 let velocityY = 0;
 let gravity = .3;
 
@@ -47,11 +42,7 @@ window.onload = function() {
     board.height = boardHeight;
     board.width = boardWidth;
 
-    context = board.getContext("2d"); //used for drawing on the board
-
-    //draw initial dinosaur
-    // context.fillStyle="green";
-    // context.fillRect(dino.x, dino.y, dino.width, dino.height);
+    context = board.getContext("2d"); 
 
     dinoImg = new Image();
     dinoImg.src = "./img/dino.png";
@@ -69,7 +60,7 @@ window.onload = function() {
     cactus3Img.src = "./img/cactus3.png";
 
     requestAnimationFrame(update);
-    setInterval(placeCactus, 1000); //1000 milliseconds = 1 second
+    setInterval(placeCactus, 1000); 
     document.addEventListener("keydown", moveDino);
 }
 
@@ -80,12 +71,10 @@ function update() {
     }
     context.clearRect(0, 0, board.width, board.height);
 
-    //dino
     velocityY += gravity;
-    dino.y = Math.min(dino.y + velocityY, dinoY); //apply gravity to current dino.y, making sure it doesn't exceed the ground
+    dino.y = Math.min(dino.y + velocityY, dinoY); 
     context.drawImage(dinoImg, dino.x, dino.y, dino.width, dino.height);
 
-    //cactus
     for (let i = 0; i < cactusArray.length; i++) {
         let cactus = cactusArray[i];
         cactus.x += velocityX;
@@ -100,7 +89,6 @@ function update() {
         }
     }
 
-    //score
     context.fillStyle="black";
     context.font="20px courier";
     score++;
@@ -113,12 +101,10 @@ function moveDino(e) {
     }
 
     if ((e.code == "Space" || e.code == "ArrowUp") && dino.y == dinoY) {
-        //jump
         velocityY = -10;
         e.preventDefault()
     }
     else if (e.code == "ArrowDown" && dino.y == dinoY) {
-        //duck
         e.preventDefault()
     }
 
@@ -129,7 +115,6 @@ function placeCactus() {
         return;
     }
 
-    //place cactus
     let cactus = {
         img : null,
         x : cactusX,
@@ -138,32 +123,32 @@ function placeCactus() {
         height: cactusHeight
     }
 
-    let placeCactusChance = Math.random(); //0 - 0.9999...
+    let placeCactusChance = Math.random(); 
 
-    if (placeCactusChance > .90) { //10% you get cactus3
+    if (placeCactusChance > .90) { 
         cactus.img = cactus3Img;
         cactus.width = cactus3Width;
         cactusArray.push(cactus);
     }
-    else if (placeCactusChance > .70) { //30% you get cactus2
+    else if (placeCactusChance > .70) { 
         cactus.img = cactus2Img;
         cactus.width = cactus2Width;
         cactusArray.push(cactus);
     }
-    else if (placeCactusChance > .50) { //50% you get cactus1
+    else if (placeCactusChance > .50) { 
         cactus.img = cactus1Img;
         cactus.width = cactus1Width;
         cactusArray.push(cactus);
     }
 
     if (cactusArray.length > 5) {
-        cactusArray.shift(); //remove the first element from the array so that the array doesn't constantly grow
+        cactusArray.shift(); 
     }
 }
 
 function detectCollision(a, b) {
-    return a.x < b.x + b.width &&   //a's top left corner doesn't reach b's top right corner
-           a.x + a.width > b.x &&   //a's top right corner passes b's top left corner
-           a.y < b.y + b.height &&  //a's top left corner doesn't reach b's bottom left corner
-           a.y + a.height > b.y;    //a's bottom left corner passes b's top left corner
+    return a.x < b.x + b.width &&   
+           a.x + a.width > b.x &&   
+           a.y < b.y + b.height &&  
+           a.y + a.height > b.y;    
 }
